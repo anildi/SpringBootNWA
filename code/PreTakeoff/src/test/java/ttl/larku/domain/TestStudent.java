@@ -13,11 +13,14 @@ public class TestStudent {
 
     @Test
     public void testSimpleStudent() {
-        Student student = new Student(1, "Alex", LocalDate.of(1990, 2, 5), Student.Status.HIBERNATING);
+        Student student = new Student("Alex", LocalDate.of(1990, 2, 5), Student.Status.HIBERNATING);
 
 //        System.out.println("student name: " + student.getName());
 
         assertEquals("Alex", student.getName());
 
+        assertEquals(0, student.getId());
+
     }
+
 }

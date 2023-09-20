@@ -22,7 +22,7 @@ public class Student {
 
     public Student() {}
 
-    public Student(int id, String name, LocalDate dob, Status status) {
+    public Student(String name, LocalDate dob, Status status) {
         this.id = id;
         this.name = name;
         this.dob = dob;
@@ -34,12 +34,11 @@ public class Student {
 
     /**
      *
-     * @param id
      * @param name
      * @param dob
      */
-    public Student(int id, String name, LocalDate dob) {
-        this(id, name, dob, Status.FULL_TIME);
+    public Student(String name, LocalDate dob) {
+        this(name, dob, Status.FULL_TIME);
 //        this.id = id;
 //        this.name = name;
 //        this.dob = dob;

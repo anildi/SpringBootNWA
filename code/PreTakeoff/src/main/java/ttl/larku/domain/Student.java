@@ -5,7 +5,8 @@ import java.time.LocalDate;
 /**
  * @author whynot
  */
-public class Student {
+public class Student implements Comparable<Student>{
+
 
     public enum Status {
         FULL_TIME,
@@ -104,5 +105,17 @@ public class Student {
                 ", dob=" + dob +
                 ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student other) {
+//        if(this.id < other.id) {
+//            return -1;
+//        }else if(this.id > other.id) {
+//            return 1;
+//        }else {
+//            return 0;
+//        }
+        return Integer.compare(this.id, other.id);
     }
 }

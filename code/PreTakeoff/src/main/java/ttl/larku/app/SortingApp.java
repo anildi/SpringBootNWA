@@ -30,8 +30,8 @@ public class SortingApp {
         for(Student student : students) {
             System.out.println(student);
         }
-
     }
+
 
     public void sortWithComparator() {
 
@@ -52,15 +52,26 @@ public class SortingApp {
                 return o1.getName().compareTo(o2.getName());
             };
 
-        //Collections.sort(students, nc);
-        //Collections.sort(students, anonComparator);
-        //Collections.sort(students, lambdaComparator);
+        Comparator<Student> lambdaComparator2 = (o1, o2) -> {
+            return o1.getName().compareTo(o2.getName());
+        };
 
-        Collections.sort(students, (o1, o2) -> o2.getName().compareTo(o2.getName()));
+        Comparator<Student> lambdaComparator3 = (o1, o2) -> o1.getName().compareTo(o2.getName());
+
+
+//        Collections.sort(students, nc);
+//        Collections.sort(students, anonComparator);
+        Collections.sort(students, lambdaComparator3);
+
+//        students.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
 
         for(Student student : students) {
             System.out.println(student);
         }
+
+    }
+
+    public static <T> void sort(List<T> list, Comparator<T> c) {
 
     }
 
@@ -76,7 +87,4 @@ public class SortingApp {
 
     }
 
-    public static <T> void sort(List<T> list, Comparator<T> c) {
-
-    }
 }

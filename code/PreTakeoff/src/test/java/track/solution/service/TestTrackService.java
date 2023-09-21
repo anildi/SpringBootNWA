@@ -1,7 +1,6 @@
 package track.solution.service;
 
 import org.junit.jupiter.api.Test;
-import track.solution.TrackService;
 import track.solution.domain.Track;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +13,7 @@ public class TestTrackService {
 
     @Test
     public void testInserAndGet() {
-        Track newTrack = new Track("Joann", "Stars in their eyse", "04:00", "2020-10-08", Track.Format.OGG);
+        Track newTrack = new Track("Joann", "Stars in their eyes", "04:00", "2020-10-08", Track.Format.OGG);
         assertEquals(0, newTrack.getId());
 
         TrackService service = new TrackService();

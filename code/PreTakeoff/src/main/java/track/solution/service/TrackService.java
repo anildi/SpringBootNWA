@@ -1,4 +1,4 @@
-package track.solution;
+package track.solution.service;
 
 import track.solution.dao.TrackDAO;
 import track.solution.domain.Track;

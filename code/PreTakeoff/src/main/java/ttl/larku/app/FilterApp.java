@@ -77,15 +77,15 @@ public class FilterApp {
 
         List<Student> students = ss.getAll();
 
-        List<Student> partTime = bestChooser(students, s -> s.getStatus() == Student.Status.PART_TIME);
+        List<Student> partTime = filter(students, s -> s.getStatus() == Student.Status.PART_TIME);
 
 
         List<String> strings = List.of("one", "two", "threeee");
-        List<String> lenghtGt3 = bestChooser(strings, s -> s.length() > 3);
+        List<String> lenghtGt3 = filter(strings, s -> s.length() > 3);
 
     }
 
-    public <T> List<T> bestChooser(List<T> input, Predicate<T> chooser) {
+    public <T> List<T> filter(List<T> input, Predicate<T> chooser) {
         List<T> result = new ArrayList<>();
         for(T s : input) {
             if(chooser.test(s)) {

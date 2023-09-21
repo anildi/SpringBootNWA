@@ -3,7 +3,7 @@ package track.solution.domain;
 /**
  * @author whynot
  */
-public class Track {
+public class Track implements Comparable<Track>{
     /*
     . Id – should be unique
 2. Artist
@@ -89,5 +89,22 @@ public class Track {
 
     public void setFormat(Format format) {
         this.format = format;
+    }
+
+    @Override
+    public int compareTo(Track other) {
+        return Integer.compare(id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", artist='" + artist + '\'' +
+                ", album='" + album + '\'' +
+                ", duration='" + duration + '\'' +
+                ", date='" + date + '\'' +
+                ", format=" + format +
+                '}';
     }
 }

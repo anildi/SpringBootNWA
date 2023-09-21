@@ -70,7 +70,8 @@ public class MapApp {
         }
 
         List<String> lstr = List.of("One", "Two", "threeeee");
-        List<Integer> lengths = map(lstr, String::length);
+        List<Integer> lengths = map(lstr, this::mapStringToIntegerInComplicatedWay);
+
 //void accept(T t)
 
         lengths.forEach(this::prettyPrint);
@@ -84,7 +85,12 @@ public class MapApp {
         System.out.println("[[ " + arg + "]]");
     }
 
-
+    public Integer mapStringToIntegerInComplicatedWay(String arg) {
+        //Go do DB Operations
+        //Go talk to a web service
+        //Do complicated calculations
+        return 42;
+    }
 
     public <T, R> List<R> map(List<T> input, Function<T, R> extractor) {
         List<R> result = new ArrayList<>();

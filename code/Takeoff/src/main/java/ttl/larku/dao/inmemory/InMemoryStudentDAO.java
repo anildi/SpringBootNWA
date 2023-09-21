@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class InMemoryStudentDAO {
 
-    private Map<Integer, Student> students = new HashMap<Integer, Student>();
+    private Map<Integer, Student> students = new HashMap<>();
     private static AtomicInteger nextId = new AtomicInteger(0);
 
     public boolean update(Student updateObject) {

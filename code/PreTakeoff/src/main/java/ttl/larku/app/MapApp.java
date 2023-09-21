@@ -6,6 +6,7 @@ import ttl.larku.service.StudentService;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author whynot
@@ -69,11 +70,29 @@ public class MapApp {
         }
 
         List<String> lstr = List.of("One", "Two", "threeeee");
-        List<Integer> lengths = almostBestMap(lstr, str -> str.length());
+        List<Integer> lengths = map(lstr, String::length);
+//void accept(T t)
 
-        for(Integer len: lengths) {
-            System.out.println(len);
+        lengths.forEach(this::prettyPrint);
+
+//        for(Integer len: lengths) {
+////            System.out.println(len);
+//        }
+    }
+
+    public void prettyPrint(Integer arg) {
+        System.out.println("[[ " + arg + "]]");
+    }
+
+
+
+    public <T, R> List<R> map(List<T> input, Function<T, R> extractor) {
+        List<R> result = new ArrayList<>();
+        for(T s : input) {
+            result.add(extractor.apply(s));
         }
+
+        return result;
     }
 
     public <T, R> List<R> almostBestMap(List<T> input, GenericExtractor<T, R> extractor) {

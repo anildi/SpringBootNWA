@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 /**
  * @author whynot
@@ -42,4 +43,5 @@ public class TrackDAO {
     public boolean delete(int id) {
         return tracks.remove(id) == null;
     }
+
 }

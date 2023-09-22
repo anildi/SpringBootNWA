@@ -39,6 +39,9 @@ public class SpringDemo {
         //ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         ApplicationContext context = new AnnotationConfigApplicationContext(LarkUConfig.class);
 
+//        CourseService cs = new CourseService();
+//        cs.getAllCourses();
+
         CourseService ss = context.getBean("courseService", CourseService.class);
 
         List<Course> courses = ss.getAllCourses();

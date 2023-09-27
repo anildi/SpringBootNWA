@@ -13,7 +13,6 @@ import ttl.larku.domain.Course;
 
 //@Component
 @Repository
-@Primary
 public class InMemoryCourseDAO implements BaseDAO<Course> {
 
     private Map<Integer, Course> courses = new HashMap<Integer, Course>();

@@ -1,6 +1,7 @@
 package ttl.larku.reflect.inject;
 
 import java.lang.reflect.InvocationTargetException;
+import java.net.URLClassLoader;
 
 /**
  * @author whynot

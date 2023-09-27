@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {LarkUConfig.class})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+//@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class StudentServiceTest {
 
     private String name1 = "Bloke";
@@ -35,6 +35,7 @@ public class StudentServiceTest {
     @BeforeEach
     public void setup() {
 //        studentService = new StudentService();
+//        System.out.println("context: " + context.hashCode());
     }
 
     @Test

@@ -17,7 +17,7 @@ import ttl.larku.domain.Course;
 public class CourseService {
 
     @Autowired
-    @Qualifier("jpaCourseDAO")
+//    @Qualifier("jpaCourseDAO")
     private BaseDAO<Course> courseDAO;
 
     public CourseService() {

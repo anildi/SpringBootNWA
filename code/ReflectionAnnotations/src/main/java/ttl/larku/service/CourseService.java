@@ -11,7 +11,7 @@ public class CourseService {
 	private BaseDAO<Course> courseDAO;
 	
 	public CourseService() {
-		courseDAO = new InMemoryCourseDAO();
+//		courseDAO = new InMemoryCourseDAO();
 	}
 	
 	public Course createCourse(String code, String title) {

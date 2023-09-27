@@ -1,10 +1,11 @@
-package com.example.demo;
+package ttl.larku;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -13,14 +14,12 @@ import ttl.larku.service.StudentService;
 
 import java.util.List;
 
-//@SpringBootApplication
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
+@SpringBootApplication
 public class SbdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SbdemoApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SbdemoApplication.class, args);
+		System.out.println("context");
 	}
 }
 

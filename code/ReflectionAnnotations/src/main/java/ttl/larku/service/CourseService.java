@@ -3,11 +3,13 @@ package ttl.larku.service;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.dao.inmemory.InMemoryCourseDAO;
 import ttl.larku.domain.Course;
+import ttl.larku.reflect.inject.MyInject;
 
 import java.util.List;
 
 public class CourseService {
 
+	@MyInject
 	private BaseDAO<Course> courseDAO;
 	
 	public CourseService() {

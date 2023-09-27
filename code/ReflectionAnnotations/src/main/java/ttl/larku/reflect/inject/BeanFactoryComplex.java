@@ -86,6 +86,7 @@ public class BeanFactoryComplex {
 
             //Get the generic field Type.
             Type fieldGenericType = field.getGenericType();
+            var tc = fieldGenericType.getClass();
 
             for (Class<?> cls : subTypes) {
                 //The types of Interfaces implemented by the class

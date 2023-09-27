@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import ttl.larku.domain.Student;
 import ttl.larku.service.StudentService;
 
+import javax.sound.midi.Track;
 import java.util.List;
 
 @SpringBootApplication
@@ -22,6 +23,21 @@ public class SbdemoApplication {
 		System.out.println("context");
 	}
 }
+
+//@Component
+//class MyTrackRunner implements CommandLineRunner
+//{
+//	@Autowired
+//	private TrackService trackService;
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		System.out.println("Hello from MyRunner");
+//
+//		List<Track> tracks = trackService.getAllTracks();
+//		tracks.forEach(System.out::println);
+//	}
+//}
 
 @Component
 class MyRunner implements CommandLineRunner

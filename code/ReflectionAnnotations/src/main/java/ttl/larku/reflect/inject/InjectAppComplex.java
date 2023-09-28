@@ -17,6 +17,7 @@ public class InjectAppComplex {
         sc.doStuff();
 
         CourseService courseService = BeanFactoryComplex.getBean(CourseService.class);
+        courseService.createCourse("Math-101", "Baby Math");
         List<Course> courses = courseService.getAllCourses();
         System.out.println("courses: " + courses);
     }

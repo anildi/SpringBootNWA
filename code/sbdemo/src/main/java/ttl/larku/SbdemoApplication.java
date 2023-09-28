@@ -24,21 +24,6 @@ public class SbdemoApplication {
 	}
 }
 
-//@Component
-//class MyTrackRunner implements CommandLineRunner
-//{
-//	@Autowired
-//	private TrackService trackService;
-//
-//	@Override
-//	public void run(String... args) throws Exception {
-//		System.out.println("Hello from MyRunner");
-//
-//		List<Track> tracks = trackService.getAllTracks();
-//		tracks.forEach(System.out::println);
-//	}
-//}
-
 @Component
 class MyRunner implements CommandLineRunner
 {

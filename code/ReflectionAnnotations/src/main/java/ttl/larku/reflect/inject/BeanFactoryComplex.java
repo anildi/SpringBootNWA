@@ -1,11 +1,15 @@
 package ttl.larku.reflect.inject;
 
 import org.reflections.Reflections;
+import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.reflections.scanners.Scanners.SubTypes;
@@ -44,7 +48,17 @@ public class BeanFactoryComplex {
                 //If it is an interface, get an implementing
                 //class.
                 if (targetType.isInterface()) {
-                    targetType = findSingleImplementation(field);
+                    var allImpls = findImplementations(field, "ttl.larku", "com.other.otherpack");
+                    //For now, if multiple implementations are found, we
+                    // just take the first one.  We Could throw
+                    // a "NoUniqueBean" Exception.
+                    if(allImpls.size() > 0) {
+                        //targetType = listOfImpls.get(0);
+                        targetType = allImpls.stream().findAny().orElse(null);
+                    } else {
+                        //"NoSuchBean"
+                        throw new InstantiationException("No Beans of type: " + targetType + " found to inject into object of class: " + clazz);
+                    }
                 }
                 //Create the new instance
                 Object newInstance = targetType.getConstructor().newInstance();
@@ -62,24 +76,38 @@ public class BeanFactoryComplex {
     }
 
     /**
-     * Find a single implementation for a given interface.
+     * Find all implementations for a given interface.
      * We are using the fabulous Reflections library for this.
-     * For now, if we find multiple implementations, we return
-     * the *last* one we find.
+     * We search either in the list of scanPackages you give us,
+     * or the package of the Type of the given field.
+     * We return a possibly empty Set of implementing classes.
      *
      * https://github.com/ronmamo/reflections
      *
      * @param field the interface field we want to find an implementation
      *              for.
-     * @return
+     * @param scanPackages optional list of packages to scan for.
+     * @return Set of Implementing classes.
      */
-    public static Class<?> findSingleImplementation(Field field) {
-        Class<?> result = null;
+    public static Set<Class<?>> findImplementations(Field field, String ...scanPackages) {
+        //List<Class<?>> result = new ArrayList<>();
+        Set<Class<?>> result = new HashSet<>();
         Class<?> inputClass = field.getType();
         if(inputClass.isInterface()) {
 
             //Search in the top package.
-            Reflections reflections = new Reflections("ttl.larku");
+            Reflections reflections;
+            //If you give us packages to scan, we use those
+            if(scanPackages.length > 0) {
+                reflections = new Reflections(
+                        new ConfigurationBuilder()
+                                .forPackages(scanPackages)
+                );
+            } else { //else we use the package that this class is from
+                String packName = inputClass.getPackageName();
+                System.out.println("class: " + inputClass + ", packName: " + packName);
+                reflections = new Reflections(packName);
+            }
 
             Set<Class<?>> subTypes =
                     reflections.get(SubTypes.of(inputClass).asClass());
@@ -95,7 +123,7 @@ public class BeanFactoryComplex {
                 for (Type type : types) {
 //                System.out.println("type: " + type);
                     if (type.equals(fieldGenericType)) {
-                        result = cls;
+                        result.add(cls);
                         System.out.println("Found it!!!: cls: " + cls + ", type: " + type);
                     }
                 }

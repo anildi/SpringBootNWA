@@ -1,7 +1,9 @@
 package ttl.larku.dao.inmemory;
 
+import com.other.otherpack.OtherImportantService;
 import ttl.larku.dao.BaseDAO;
 import ttl.larku.domain.Course;
+import ttl.larku.reflect.inject.MyInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,9 @@ public class InMemoryCourseDAO implements BaseDAO<Course>{
 
 	private Map<Integer, Course> courses = new ConcurrentHashMap<>();
 	private static AtomicInteger nextId = new AtomicInteger(1);
+
+	@MyInject
+	private OtherImportantService otherService;
 	
 	public boolean update(Course updateObject) {
 		return courses.computeIfPresent(updateObject.getId(), (k, oldValue) -> updateObject) != null;
@@ -37,6 +42,7 @@ public class InMemoryCourseDAO implements BaseDAO<Course>{
 	}
 
 	public List<Course> getAll() {
+		System.out.println(otherService.doStuff("InMemoryCourseDAO"));
 		return new ArrayList<Course>(courses.values());
 	}
 	

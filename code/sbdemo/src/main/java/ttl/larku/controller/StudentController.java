@@ -15,8 +15,11 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-    @Autowired
     private StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping("/hello")
     public String sayHello() {

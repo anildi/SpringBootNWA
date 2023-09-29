@@ -18,6 +18,9 @@ public class AtValueDemoService {
     @Value("#{'${spring.profiles.active}' == 'development'}")
     private boolean isDevelopment;
 
+    @Value("${ttl.tester.config.name}")
+    private String configName;
+
     //Call a method on another bean.
     @Value("#{connectionService.getHost()}")
     private String host;
@@ -40,5 +43,13 @@ public class AtValueDemoService {
 
     public String getHost() {
         return host;
+    }
+
+    public String getConfigName() {
+        return configName;
+    }
+
+    public void setConfigName(String configName) {
+        this.configName = configName;
     }
 }

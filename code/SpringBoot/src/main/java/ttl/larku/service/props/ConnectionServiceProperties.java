@@ -8,7 +8,6 @@ import java.time.Duration;
 
 @Component
 @ConfigurationProperties("ttl.connection-service")
-//@PropertySource("classpath:larkUContext.properties")
 public class ConnectionServiceProperties {
 
     private String host;

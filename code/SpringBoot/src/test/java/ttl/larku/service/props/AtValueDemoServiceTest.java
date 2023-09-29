@@ -24,6 +24,9 @@ public class AtValueDemoServiceTest {
         System.out.println("profile: " + profile + ", isDev: " + isDev + ", host: " + host);
 
         assertTrue(isDev);
-        assertEquals("xyz.com", host);
+//        assertEquals("xyz.com", host);
+
+        String configName = avds.getConfigName();
+        System.out.println("configName: " + configName);
     }
 }

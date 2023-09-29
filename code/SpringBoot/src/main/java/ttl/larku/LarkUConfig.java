@@ -32,8 +32,8 @@ public class LarkUConfig {
 
     private LarkUTestDataConfig testDataProducer = new LarkUTestDataConfig();
 
-    @Value("${larku.profile.active}")
-    private String profile;
+//    @Value("${larku.profile.active}")
+//    private String profile;
 
     @Bean
     @Profile("development")

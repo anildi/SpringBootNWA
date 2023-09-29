@@ -3,6 +3,7 @@ package ttl.larku.controller;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +26,15 @@ import ttl.larku.service.StudentService;
 @RequestMapping("/student")
 public class StudentController {
 
-    private StudentService studentService;
+//    @Autowired
+    private final StudentService studentService;
+//    @Autowired
+    private final UriCreator uriCreator;
 
-    public StudentController(StudentService studentService) {
+    @Autowired
+    public StudentController(StudentService studentService, UriCreator uriCreator) {
         this.studentService = studentService;
+        this.uriCreator = uriCreator;
     }
 
     @GetMapping("/hello")
@@ -37,7 +43,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<Student> getAllStudent() {
+    public List<Student> getAllStudents() {
         List<Student> students = studentService.getAllStudents();
         return students;
     }
@@ -57,11 +63,13 @@ public class StudentController {
 
         //String str = "http://localhost:8080/student/" + newStudent.getId();
         
-        URI newResource = ServletUriComponentsBuilder
-              .fromCurrentRequest()
-              .path("/{id}")
-              .buildAndExpand(newStudent.getId())
-              .toUri();
+//        URI newResource = ServletUriComponentsBuilder
+//              .fromCurrentRequest()
+//              .path("/{id}")
+//              .buildAndExpand(newStudent.getId())
+//              .toUri();
+
+        URI newResource = uriCreator.getURI(student.getId());
 
         return ResponseEntity.created(newResource).build();
     }

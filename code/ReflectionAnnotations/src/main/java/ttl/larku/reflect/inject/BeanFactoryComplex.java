@@ -69,7 +69,7 @@ public class BeanFactoryComplex {
 
                 //Now look through your new created object and
                 //possibly do injection on it.
-                //This needs severe testing.
+                //This seems to work but may need more rigorous testing.
                 doInjection(newInstance);
             }
         }

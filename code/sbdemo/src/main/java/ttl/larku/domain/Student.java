@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,22 +17,39 @@ import java.util.Objects;
 @Entity
 public class Student {
 
-//    public enum Status {
-//        FULL_TIME(17),
-//        PART_TIME(210),
-//        HIBERNATING(0);
-//
-//        private int value;
-//        Status(int value) {
-//           this.value = value;
-//        }
-//    };
-
     public enum Status {
-        FULL_TIME,
-        PART_TIME,
-        HIBERNATING
-    };
+        FULL_TIME(17),
+        PART_TIME(210),
+        HIBERNATING(0);
+
+        private int code;
+        Status(int code) {
+           this.code = code;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public static Status of(String codeStr) {
+            return of(Integer.parseInt(codeStr));
+        }
+
+        public static Status of(int code) {
+            var result = Arrays.stream(Status.values())
+                    .filter(es -> es.code == code)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException(("No Status with code: " + code)));
+
+            return result;
+        }
+    }
+
+//    public enum Status {
+//        FULL_TIME,
+//        PART_TIME,
+//        HIBERNATING
+//    };
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +63,7 @@ public class Student {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dob;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private Status status = Status.FULL_TIME;
 
 //    private List<ScheduledClass> classes;

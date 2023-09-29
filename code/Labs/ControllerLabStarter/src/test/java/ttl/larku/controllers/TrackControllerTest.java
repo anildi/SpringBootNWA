@@ -32,7 +32,7 @@ public class TrackControllerTest {
     public void init() { }
 
     @Test
-    public void testGetAllStudents() throws Exception {
+    public void testGetAllTracks() throws Exception {
 
         //Done - - Initialize ResultActions with the result of a mockMvc call to get one track
         //     - Look at the main line projects for examples
@@ -49,17 +49,13 @@ public class TrackControllerTest {
 
 
     @Test
-    public void testGetOneStudent() throws Exception {
+    public void testGetOneTrack() throws Exception {
 
         //TODO - Initialize ResultActions with the result of a mockMvc call to get one track
         //     - Look at the main line projects for examples
         ResultActions actions = null;
 
         //TODO - Add an expectation to check that the status is Ok
-
-
-        //TODO - Add an expectation to check the size of the returned collection
-
 
 
         MvcResult result = actions.andReturn();

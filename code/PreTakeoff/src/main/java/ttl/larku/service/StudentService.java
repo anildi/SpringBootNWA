@@ -25,7 +25,7 @@ public class StudentService {
       return studentDAO.findById(id);
    }
 
-   public List<Student> getAllStudent() {
+   public List<Student> getAllStudents() {
       return studentDAO.findAll();
    }
 

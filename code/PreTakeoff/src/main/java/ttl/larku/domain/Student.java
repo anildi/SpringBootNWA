@@ -12,8 +12,9 @@ The Student class should have at least the following properties:
  */
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Student {
+public class Student extends Object{
 
    public enum Status {
       FULL_TIME,
@@ -83,4 +84,27 @@ public class Student {
    public void setPhoneNumber(String phoneNumber) {
       this.phoneNumber = phoneNumber;
    }
+
+   @Override
+   public String toString() {
+      return "Student{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", dob=" + dob +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", status=" + status +
+            '}';
+   }
+
+//   @Override
+//   public boolean equals(Object o) {
+//      if (this == o) return true;
+//      if (!(o instanceof Student student)) return false;
+//      return getId() == student.getId() && Objects.equals(getName(), student.getName()) && Objects.equals(getDob(), student.getDob()) && Objects.equals(getPhoneNumber(), student.getPhoneNumber()) && getStatus() == student.getStatus();
+//   }
+//
+//   @Override
+//   public int hashCode() {
+//      return Objects.hash(getId(), getName(), getDob(), getPhoneNumber(), getStatus());
+//   }
 }

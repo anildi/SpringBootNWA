@@ -13,7 +13,8 @@ public class TrackDAO {
 
    public Track create(Track track) {
       int id = nextId++;
-      track.setId(id);
+//      track.setId(id);
+      track = track.withId(id);
       tracks.put(track.getId(), track);
 
       return track;

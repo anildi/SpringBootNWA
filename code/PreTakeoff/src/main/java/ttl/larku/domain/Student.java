@@ -14,7 +14,8 @@ The Student class should have at least the following properties:
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Student extends Object{
+public class Student implements Comparable<Student>{
+
 
    public enum Status {
       FULL_TIME,
@@ -96,15 +97,27 @@ public class Student extends Object{
             '}';
    }
 
-//   @Override
-//   public boolean equals(Object o) {
-//      if (this == o) return true;
-//      if (!(o instanceof Student student)) return false;
-//      return getId() == student.getId() && Objects.equals(getName(), student.getName()) && Objects.equals(getDob(), student.getDob()) && Objects.equals(getPhoneNumber(), student.getPhoneNumber()) && getStatus() == student.getStatus();
-//   }
-//
-//   @Override
-//   public int hashCode() {
-//      return Objects.hash(getId(), getName(), getDob(), getPhoneNumber(), getStatus());
-//   }
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (!(o instanceof Student student)) return false;
+      return getId() == student.getId() && Objects.equals(getName(), student.getName()) && Objects.equals(getDob(), student.getDob()) && Objects.equals(getPhoneNumber(), student.getPhoneNumber()) && getStatus() == student.getStatus();
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(getId(), getName(), getDob(), getPhoneNumber(), getStatus());
+   }
+
+   @Override
+   public int compareTo(Student other) {
+      return Integer.compare(id, other.id);
+
+//      if(this.id < other.getId()) {
+//         return -1;
+//      }else if(this.id > other.getId()) {
+//         return 1;
+//      }
+//      return 0;
+   }
 }

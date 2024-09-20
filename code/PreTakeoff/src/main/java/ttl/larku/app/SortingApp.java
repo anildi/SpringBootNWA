@@ -80,7 +80,7 @@ public class SortingApp {
    }
 
 
-   public static <T extends Comparable<T>> void sort(List<T> list) {}
+   public static <T extends Comparable<T>> void mysort(List<T> list) {}
 
-   public static <T> void sort(List<T> list, Comparator<T> c) {}
+   public static <T> void mysort(List<T> list, Comparator<T> c) {}
 }

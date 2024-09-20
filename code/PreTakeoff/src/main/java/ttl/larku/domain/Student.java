@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Student implements Comparable<Student>{
 
 
+
    public enum Status {
       FULL_TIME,
       PART_TIME,

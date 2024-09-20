@@ -52,16 +52,20 @@ public class SortingApp {
             return o1.getName().compareTo(o2.getName());
          };
 
+
       Comparator<Student> c3 = (o1, o2) -> {
          return o1.getName().compareTo(o2.getName());
       };
 
-      Comparator<Student> c4 = Collections.reverseOrder((o1, o2) -> o2.getName().compareTo(o1.getName()));
+      Comparator<Student> c4 = (o1, o2) -> o2.getName().compareTo(o1.getName());
       c4 = c4.reversed();
 //      Collections.sort(students, c4);
 
-      //Collections.sort(students, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+      Collections.sort(students, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+
       Collections.sort(students, Collections.reverseOrder((o1, o2) -> o1.getDob().compareTo(o2.getDob())));
+
+//      Collections.sort(students, c4);
 
 
 
@@ -80,7 +84,7 @@ public class SortingApp {
    }
 
 
-   public static <T extends Comparable<T>> void mysort(List<T> list) {}
 
+   public static <T extends Comparable<T>> void mysort(List<T> list) {}
    public static <T> void mysort(List<T> list, Comparator<T> c) {}
 }

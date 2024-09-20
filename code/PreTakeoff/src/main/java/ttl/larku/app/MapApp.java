@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import ttl.larku.domain.Student;
@@ -62,13 +63,16 @@ public class MapApp {
       dobs.forEach(out::println);
    }
 
+   public static void foo(int i) {}
+   public void bar(int i) {}
+
    public void callBestMap() {
       StudentService studentService = new StudentService();
       StudentData.initStudentService(studentService);
       List<Student> students = studentService.getAllStudents();
 
 //      NameExtractor ne = new NameExtractor();
-      Function<Student, String> e = s -> s.getName();
+      Function<Student, String> e = Student::getName;
       Function<Student, String> phoneExtractor = s -> s.getPhoneNumber();
       Function<Student, LocalDate> dobExtractor = s -> s.getDob();
 

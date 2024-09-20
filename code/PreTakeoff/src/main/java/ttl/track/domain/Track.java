@@ -38,7 +38,7 @@ below.
 
 //   public Track() {}
 
-   private Track(int id, String title, String artist, String album, Duration duration, LocalDate date, Format format) {
+   public Track(int id, String title, String artist, String album, Duration duration, LocalDate date, Format format) {
       this.id = id;
       this.title = title;
       this.artist = artist;
@@ -48,9 +48,9 @@ below.
       this.format = format;
    }
 
-//   public Track(String title, String artist, String album, Duration duration, LocalDate date, Format format) {
-//     this(0, title, artist, album, duration, date, format);
-//   }
+   public Track(String title, String artist, String album, Duration duration, LocalDate date, Format format) {
+     this(0, title, artist, album, duration, date, format);
+   }
 
    public int getId() {
       return id;
@@ -97,6 +97,10 @@ below.
       return date;
    }
 
+   public Format getFormat() {
+      return format;
+   }
+
    public Track withId(int id) {
       return new Track(id,
             this.title,
@@ -110,6 +114,19 @@ below.
 //   public void setDate(LocalDate date) {
 //      this.date = date;
 //   }
+
+   @Override
+   public String toString() {
+      return "Track{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", artist='" + artist + '\'' +
+            ", album='" + album + '\'' +
+            ", duration=" + duration +
+            ", date=" + date +
+            ", format=" + format +
+            '}';
+   }
 
    public static class TrackBuilder {
       private int id;

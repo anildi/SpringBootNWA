@@ -4,18 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import ttl.larku.domain.Student;
 
 public class InMemoryStudentDAO implements StudentDAO {
 
 //   List<Student> studentList = new ArrayList<>();
-   private Map<Integer, Student> students = new HashMap<>();
-   private int nextId = 1;
+//   private Map<Integer, Student> students = new HashMap<>();
+//   private int nextId = 1;
+   private Map<Integer, Student> students = new ConcurrentHashMap<>();
+   private AtomicInteger nextId = new AtomicInteger(1);
 
 
    @Override
    public Student insert(Student student) {
-      int id = nextId++;
+//      int id = nextId++;
+      int id = nextId.getAndIncrement();
+
       student.setId(id);
       student.setName("InMem: " + student.getName());
 

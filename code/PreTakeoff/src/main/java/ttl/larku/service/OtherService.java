@@ -1,11 +1,23 @@
 package ttl.larku.service;
 
-import ttl.larku.dao.DaoFactory;
-import ttl.larku.dao.StudentDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ttl.larku.dao.CourseDAO;
 
+
+@Service
 public class OtherService {
 
-   private StudentDAO studentDAO = DaoFactory.studentDAO();
+   @Autowired
+   private CourseDAO otherDAO;
+
+   public OtherService() {
+      int stop = 0;
+   }
+
+   public void doit() {
+      otherDAO.doit();
+   }
 
 
 }

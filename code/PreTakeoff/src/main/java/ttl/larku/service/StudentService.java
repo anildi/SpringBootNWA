@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 import ttl.larku.dao.DaoFactory;
 import ttl.larku.dao.InMemoryStudentDAO;
 import ttl.larku.dao.MysqlStudentDAO;
@@ -18,7 +19,13 @@ public class StudentService {
    //private MysqlStudentDAO studentDAO = new MysqlStudentDAO();
    //private StudentDAO studentDAO = new MysqlStudentDAO();
 //   private StudentDAO studentDAO = new InMemoryStudentDAO();
-   private StudentDAO studentDAO = DaoFactory.studentDAO();
+   //private StudentDAO studentDAO = DaoFactory.studentDAO();
+
+   private StudentDAO studentDAO;
+
+   public StudentService() {
+      int stop = 0;
+   }
 
 
    public Student createStudent(Student student) {
@@ -50,7 +57,11 @@ public class StudentService {
 
    //   public InMemoryStudentDAO getStudentDAO() {
 //   public MysqlStudentDAO getStudentDAO() {
-   public StudentDAO getStudentDAO() {
-      return studentDAO;
+//   public StudentDAO getStudentDAO() {
+//      return studentDAO;
+//   }
+
+   public void setStudentDAO(StudentDAO studentDAO) {
+      this.studentDAO = studentDAO;
    }
 }

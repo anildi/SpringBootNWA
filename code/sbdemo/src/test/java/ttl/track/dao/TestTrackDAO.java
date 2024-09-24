@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestTrackDAO {
 
-   private TrackDAO trackDAO = new TrackDAO();
+   private InMemoryTrackDAO trackDAO = new InMemoryTrackDAO();
    @Test
    public void testCreateTrack() {
       Track newTrack = new Track.TrackBuilder()

@@ -1,4 +1,4 @@
-package ttl.larku;
+package ttl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import ttl.larku.domain.Student;
+import ttl.larku.jconfig.StudentData;
 import ttl.larku.service.OtherService;
 import ttl.larku.service.StudentService;
 import ttl.track.domain.Track;
@@ -19,6 +20,10 @@ import ttl.track.service.TrackService;
 import static java.lang.System.out;
 
 @SpringBootApplication
+//@Configuration
+//@ComponentScan
+
+//@EnableAutoConfiguration
 public class SbdemoApplication {
 
 	public static void main(String[] args) {
@@ -37,6 +42,8 @@ class MyRunner implements CommandLineRunner
 
 	@Override
 	public void run(String... args) throws Exception {
+		StudentData.initStudentService(studentService);
+
 		List<Student> students = studentService.getAllStudents();
 		out.println("Students: " + students.size());
 		students.forEach(out::println);

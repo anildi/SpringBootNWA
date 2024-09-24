@@ -46,6 +46,10 @@ public class Student implements Comparable<Student>{
       this(0, name, dob, null, Status.FULL_TIME);
    }
 
+   public Student() {
+     int stop = 0;
+   }
+
 
    public int getId() {
       return id;

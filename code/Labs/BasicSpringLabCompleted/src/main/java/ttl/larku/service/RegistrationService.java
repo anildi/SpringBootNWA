@@ -1,6 +1,7 @@
 package ttl.larku.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ttl.larku.domain.ScheduledClass;
 import ttl.larku.domain.Student;
@@ -19,6 +20,10 @@ public class RegistrationService {
     private StudentService studentService;
 //    @Autowired
     private ClassService classService;
+
+//    public RegistrationService() {
+//        int count = studentService.getAllStudents().size();
+//    }
 
     public RegistrationService(CourseService courseService,
                                StudentService studentService,

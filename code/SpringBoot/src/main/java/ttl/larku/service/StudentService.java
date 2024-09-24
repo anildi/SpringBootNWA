@@ -10,7 +10,7 @@ import ttl.larku.domain.Student.Status;
 import ttl.larku.domain.StudentCreatedEvent;
 import ttl.larku.service.props.ServiceThatWeDontOwn;
 
-@Service
+//@Service
 public class StudentService {
 
     private BaseDAO<Student> studentDAO;

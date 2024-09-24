@@ -1,6 +1,7 @@
 package ttl.larku.jconfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -70,6 +71,15 @@ public class LarkUConfig {
       return cs;
    }
 
+   @Bean
+   public StudentService studentService(BaseDAO<Student>studentDAO,
+                                        ApplicationEventPublisher publisher,
+                                        ServiceThatWeDontOwn ctwdo) {
+
+      StudentService ss = new StudentService(studentDAO, publisher, ctwdo);
+
+      return ss;
+   }
 
    @Bean
    public RegistrationService registrationService(StudentService studentService,

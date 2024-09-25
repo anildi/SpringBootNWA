@@ -11,12 +11,19 @@ The Student class should have at least the following properties:
 • Hibernating
  */
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class Student implements Comparable<Student>{
-
-
 
    public enum Status {
       FULL_TIME,
@@ -24,10 +31,16 @@ public class Student implements Comparable<Student>{
       HIBERNATING
    }
 
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
+
    private String name;
    private LocalDate dob;
+//   @Column(name = "PHONENUMBER")
    private String phoneNumber;
+
+   @Enumerated(EnumType.STRING)
    private Status status = Status.FULL_TIME;
 
    public Student(int id, String name, LocalDate dob, String phoneNumber, Status status) {

@@ -68,7 +68,11 @@ public class StudentRestControllerMvcTest {
         MediaType accept = MediaType.APPLICATION_JSON;
         MediaType contentType = accept;
 
-        MockHttpServletRequestBuilder builder = get("/adminrest/student/{id}", goodStudentId)
+//        MockHttpServletRequestBuilder builder = get("/adminrest/student/{id}", goodStudentId)
+//            .accept(accept)
+//            .contentType(contentType);
+
+        var builder = get("/adminrest/student/{id}", goodStudentId)
             .accept(accept)
             .contentType(contentType);
 

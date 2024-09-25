@@ -36,7 +36,8 @@ public class StudentService {
    }
 
    public Student getStudent(int id) {
-      return studentDAO.findById(id);
+      Student student = studentDAO.findById(id);
+      return student;
    }
 
    public List<Student> getAllStudents() {
@@ -44,7 +45,8 @@ public class StudentService {
    }
 
    public boolean updateStudent(Student student) {
-      return studentDAO.update(student);
+      var result = studentDAO.update(student);
+      return true;
    }
 
    public boolean deleteStudent(int id) {
